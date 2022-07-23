@@ -1,40 +1,32 @@
-name: Commit Now
+name: Auto commit
 
 on:
-  workflow_dispatch:
-    inputs:
-      email:
-        description: 'EMail'
-        required: true
-        default: 'bagusbudisatoto2001@gmail.com
-        description: 'Username'
-        required: true
-        default: 'bagussatoto'
-      commit:
-        description: 'Commit'
-        required: true
-        default: 'Penghijauan'
-      limit:
-        description: 'Limit Commit'
-        required: true
-        default: 10
+
   push:
     branches:
       - master
+      
+  schedule:
+  - cron: "0 7,9,11 * * 1,3" # See https://crontab.guru/#0_7,9,11_*_*_1,3
 
 jobs:
   auto_commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2      
+      - uses: actions/checkout@v3      
         with:
          persist-credentials: false
          fetch-depth: 0
-      
-      - name: Set Config
+
+      - name: Modify last update
         run: |
-          git config --local user.email "${{ github.event.inputs.email }}"
-          git config --local user.name "${{ github.event.inputs.username }}"
+          d=`date '+%Y-%m-%dT%H:%M:%SZ'`
+          echo $d > LAST_UPDATED
+          
+      - name: Commit changes
+        run: |
+          git config --local user.email "bagusbudisatoto2001@gmail.com"
+          git config --local user.name "bagussatoto"
           git add -A
           
           arr[0]="chore(bot): 😂 auto commit"
@@ -51,20 +43,10 @@ jobs:
           rand=$[$RANDOM % ${#arr[@]}]
           
           git commit -m "${arr[$rand]}"
-      - name: DO It
-        run: |
-          for i in {0..${{ github.event.inputs.limit }}}
-          do
-            cat > LAST_UPDATED
-            d=$i+`date '+%Y-%m-%dT%H:%M:%SZ'`
-            echo $d > LAST_UPDATED
-            git add -A
-            git commit -m "${{ github.event.inputs.commit }}"
-          done
           
       - name: GitHub Push
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-push-action@master
         with:
-          force: true
+          force-with-lease: true
           directory: "."
           github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -36,8 +36,8 @@ jobs:
       - name: second commit
         run: |
           git add .
-          git config user.name 'eeznivx'
-          git config user.email 'vinzeegriffths@gmail.com'
+          git config user.name 'bagussatoto'
+          git config user.email 'bagusbudisatoto2001@gmail.com'
           git commit -m "penghijauan"
           git push 
           
@@ -47,7 +47,7 @@ jobs:
       - name: finishing
         run: |
           git add .
-          git config user.name 'eeznivx'
-          git config user.email 'vinzeegriffths@gmail.com'
+          git config user.name 'bagussatoto'
+          git config user.email 'bagusbudisatoto2001@gmail.com'
           git commit -m "penghijauan"
           git push 

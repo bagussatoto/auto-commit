@@ -38,7 +38,7 @@ jobs:
           git add .
           git config user.name 'Takatsuki-Sen'
           git config user.email 'scrlcxnr@gmail.com'
-          git commit -m "penghijauan"
+          git commit -m "commit cheaterr"
           git push 
           
       - name: third commit
@@ -49,5 +49,5 @@ jobs:
           git add .
           git config user.name 'Takatsuki-Sen'
           git config user.email 'scrlcxnr@gmail.com'
-          git commit -m "penghijauan"
+          git commit -m  "commit cheaterr"
           git push 

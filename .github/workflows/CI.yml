@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Ga Tua
 
 # Controls when the workflow will run
 on:
@@ -42,7 +42,7 @@ jobs:
           git push 
           
       - name: third commit
-        run: sed -i '$d' dump.md
+        run: sed -i '$d' halo.md
         
       - name: finishing
         run: |

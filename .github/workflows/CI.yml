@@ -30,7 +30,7 @@ jobs:
 
       # 
       - name: first commit
-        run: date >> -
+        run: date >> auto-commit
 
       # 
       - name: second commit
@@ -38,7 +38,7 @@ jobs:
           git add .
           git config user.name 'Takatsuki-Sen'
           git config user.email 'scrlcxnr@gmail.com'
-          git commit -m "-"
+          git commit -m "auto-commit"
           git push 
           
       - name: third commit
@@ -49,5 +49,5 @@ jobs:
           git add .
           git config user.name 'Takatsuki-Sen'
           git config user.email 'scrlcxnr@gmail.com'
-          git commit -m "-"
+          git commit -m "auto-commit"
           git push 
